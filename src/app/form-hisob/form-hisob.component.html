@@ -1,0 +1,81 @@
+<!--<mat-card id="section">-->
+  <mat-tab-group id="section" (selectedTabChange)="selectedChange()">
+    <mat-tab label="Мактубҳои воридотӣ">
+      <mat-form-field class="inp1"  >
+        <mat-select [(ngModel)]="reportType" (onClose)="SelectionChangeVorid();" placeholder="Намуди ҳисобот" disableRipple  required >
+          <mat-option value="null"></mat-option>
+          <mat-option value="day">Имрӯза</mat-option>
+          <mat-option value="yesterday">Дирузина</mat-option>
+          <mat-option value="currentWeek">Ҳафтаина</mat-option>
+          <mat-option value="lastWeek">Ҳафтаи пеш</mat-option>
+          <mat-option value="currentMonth"><span style="color: #007bff">Моҳона</span></mat-option>
+          <mat-option value="lastMonth"><span style="color: #007bff">Моҳи пеш</span></mat-option>
+          <mat-option value="year"><span style="color: #007bff">Солона</span></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inp2">
+        <mat-select [(ngModel)]="filter.typeOfDocument" placeholder="Намуди ҳуҷҷатҳо" disableRipple  required >
+          <mat-option value="null"></mat-option>
+          <mat-option value="0" *ngIf="reportType === 'year' || reportType === 'lastMonth' || reportType === 'currentMonth'"><span style="color: #007bff">Ҳамагӣ</span></mat-option>
+          <mat-option *ngFor="let d of namHjVorid;" [value]="d.id" (onSelectionChange)="SelectionChangeVorid();">{{d.name}}</mat-option>
+        </mat-select>
+        <!--<span *ngIf="hujjatError" class="form-help-text">Ин бояд холи набошад!</span>-->
+      </mat-form-field>
+       <span>аз</span>
+      <mat-form-field class="inp">
+        <input matInput [matDatepicker]="picker" placeholder="кадом вақт" [(ngModel)]="filter.from"  >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+       <span>то</span>
+      <mat-form-field class="inp">
+        <input matInput [matDatepicker]="picker1" placeholder="кадом вақт" [(ngModel)]="filter.to">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <span matTooltip="Коркарди ҳисобот" >
+      <button   class="btn btn-primary" (click)="getDataByFilterVorid();"> <mat-icon class="md-24">send</mat-icon></button>
+      </span>
+    </mat-tab>
+
+    <mat-tab label="Мактубҳои содиротӣ">
+      <mat-form-field class="inp1">
+        <mat-select [(ngModel)]="reportType2" (onClose)="SelectionChangeSodir();" placeholder="Намуди ҳисобот" disableRipple required >
+          <mat-option value="null"></mat-option>
+          <mat-option value="day">Имрӯза</mat-option>
+          <mat-option value="yesterday">Дирузина</mat-option>
+          <mat-option value="currentWeek">Ҳафтаина</mat-option>
+          <mat-option value="lastWeek">Ҳафтаи пеш</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="inp2">
+        <mat-select [(ngModel)]="filterSodir.typeOfDocument"  placeholder="Намуди ҳуҷҷатҳо" disableRipple required >
+          <mat-option value="null"></mat-option>
+          <mat-option *ngFor="let d of namHjSodir;" value="{{d.id}}" (onClose)="SelectionChangeSodir();" >{{d.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+         <span>аз</span>
+      <mat-form-field class="inp">
+        <input matInput [matDatepicker]="picker2" placeholder="кадом вақт" [(ngModel)]="filterSodir.from">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <span>то</span>
+      <mat-form-field class="inp">
+        <input matInput [matDatepicker]="picker3" placeholder="кадом вақт" [(ngModel)]="filterSodir.to">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+
+      <span matTooltip="Коркарди ҳисобот" >
+      <button  class="btn btn-primary" (click)="getDataByFilterSodir();"><mat-icon class="md-24">send</mat-icon></button>
+      </span>
+    </mat-tab>
+  </mat-tab-group>
+    <div #content></div>
+
+
+
+
+

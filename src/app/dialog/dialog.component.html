@@ -1,0 +1,78 @@
+<div id="form2" mat-dialog-content>
+<div id="form1">
+  <div class="logo">
+    <span class="l l1"></span>
+    <span class="l l2"></span>
+    <span class="l l3"></span>
+    <span class="l l4"></span>
+    <span class="l l5"></span>
+  </div>
+  <h5 *ngIf="add" mat-dialog-title>Ба қайдгирии ҳуҷҷатҳои содиротӣ</h5>
+  <h5 *ngIf="!add" mat-dialog-title>Ислоҳоти ҳуҷҷатҳои содиротӣ</h5>
+</div>
+  <tr>
+    <td>1.</td>
+    <td>
+      <mat-form-field class="form-field">
+        <input matInput  type="text" placeholder="№ содирот"  required [(ngModel)]="data.nomerSodir" >
+        <button mat-button *ngIf="data.nomerSodir" matSuffix mat-icon-button aria-label="Clear"
+                (click)="data.nomerSodir=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>2.</td>
+    <td>
+      <mat-form-field class="form-field" >
+        <input matInput [matDatepicker]="picker" placeholder="Саннаи содироти ҳуҷҷат"   [(ngModel)]="data.sanaiSodir" required />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>3.</td>
+    <td>
+      <mat-form-field class="form-field">
+        <input matInput type="text" placeholder="Ба куҷо фиристода мешавад"  required [(ngModel)]="data.baKujoFirist" />
+        <button mat-button *ngIf="data.baKujoFirist" matSuffix mat-icon-button aria-label="Clear"
+                (click)="data.baKujoFirist=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>
+      <mat-form-field class="form-field">
+        <input matInput type="text" placeholder="Мазмун ва мундариҷаи мактуб" required [(ngModel)]="data.mazmun"  />
+        <button mat-button *ngIf="data.mazmun" matSuffix mat-icon-button aria-label="Clear"
+                (click)="data.mazmun=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>5.</td>
+    <td>
+      <mat-form-field class="form-field">
+        <input matInput type="text" placeholder="Иҷрокунанда" required [(ngModel)]="data.ijrokunanda" />
+        <button mat-button *ngIf="data.ijrokunanda" matSuffix mat-icon-button aria-label="Clear"
+                (click)="data.ijrokunanda=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </td>
+  </tr>
+</div>
+<div id="form3">
+  <button *ngIf="add" class="btn btn-primary"  (click)="confirmAddMactub1()">Дохил кардан</button>
+  <button *ngIf="!add" class="btn btn-primary"  (click)="confirmEditMactub1()">Сабт кардан</button>
+  <button class="btn btn-secondary" (click)="onNoClick()">Қатъ кардан</button>
+</div>
+
+

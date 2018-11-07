@@ -1,0 +1,300 @@
+
+<div *ngIf="filter.report !== 'year' && filter.report !== 'currentMonth' && filter.report !== 'lastMonth' && filter.typeOfDocument !== '0'">
+  <mat-card class="section">
+    <table align="center" cellpadding="0" cellspacing="0" border="0"  class="center" class="tables">
+      <tr>
+        <td>Р/т</td>
+        <td>№</td>
+        <td>Санаи воридоти ҳуҷҷат</td>
+        <td>Аз куҷо ворид шудааст, сана ва рақами содиротии ҳуҷҷат</td>
+        <td>Мазмуни мухтасари ҳуҷҷат</td>
+        <td>Ҳуҷҷат ба ки равона шудааст</td>
+        <td>Шахси масъул</td>
+        <td>Санна ва иҷрои шахси масъул</td>
+        <td>Ҷавоби мактуб иҷро ва рақами содирот</td>
+      </tr>
+      <tr *ngFor="let z of mactubi; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{z.num}}</td>
+        <td>{{z.sanaVoridot | date: 'd/M/yyyy'}}</td>
+        <td>{{z.azKujoVoridot}}</td>
+        <td>{{z.mazmunHujat}}</td>
+        <td>{{z. hujatiRavona}}</td>
+        <td>{{z.shaxsiMasul}}</td>
+        <td>{{z. sanaIjro | date: 'd/M/yyyy'}}</td>
+        <td>{{z.javobiMak}}</td>
+      </tr>
+    </table>
+    <h6 style="margin-top: 5px; ">Ҳамагӣ <span>{{mactubi.length}}</span> мактуб ворид шудааст.</h6>
+  </mat-card>
+</div>
+
+<div *ngIf="filter.report === 'day'  && filter.typeOfDocument === '0'">
+  <mat-card class="section">
+    <h6 align="center" style="font-family: 'Times New Roman'; font-size: 18px; margin-top: 15px">Ҳисоботи имрузаи Шуъбаи бақайдгири ҳуҷҷатҳо</h6>
+    <table align="center" cellpadding="0" cellspacing="0" border="0" class="center" class="tables">
+      <tr>
+        <td>Р/т</td>
+        <td>Номгуи ҳуҷҷати воридшуда</td>
+        <td>Шумора</td>
+      </tr>
+    </table>
+    <h6>Имрӯз дар шуъба ҳамагӣ <span>{{mactubi.length}}</span> мактубҳо ворид шудааст.</h6>
+  </mat-card>
+</div>
+
+<div *ngIf="filter.report !== 'year' && filter.report !== 'yesterday' && filter.report !== 'currentWeek' && filter.report !== 'lastWeek' && filter.report !== 'day' && filter.typeOfDocument === '0'">
+  <mat-card class="section">
+    <div>
+      <h4 align="center" style="margin-top: 30px; font-family: 'Times New Roman';">Ҳисоботи омории Шуъбаи Бақайдгири Ҳуҷҷатҳо</h4>
+      <h4 align="center" style="font-family: 'Times New Roman'; font-size: 24px"> ДТТ ба номи академик М.С.Осимӣ дар моҳи <span>{{filter.to | date: 'MMMM'}}</span> соли <span>{{filter.to | date: 'yyyy'}}</span></h4>
+      <h6>Дар моҳи <span>{{filter.to | date: 'MMMM'}}</span> соли <span>{{filter.to | date: 'yyyy'}}</span> дар Шуъбаи бақайдгирӣ ҳуҷҷатҳои зерин ба қайд гирифта шудаанд:</h6>
+      <table  align="center" cellpadding="0" cellspacing="0" border="0"  class="tables">
+        <tr>
+          <td>№</td>
+          <td>Номгуи ҳуҷҷатҳои воридшуда</td>
+          <td>Шумора</td>
+        </tr>
+        <tr *ngFor="let d of hisobot; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{d.name}}</td>
+          <td>
+            <span *ngIf="getElByTypeVorid(d.id) !== undefined">
+              {{ getElByTypeVorid(d.id).count }}
+            </span>
+          </td>
+        </tr>
+      </table>
+      <h6>Ҳамагӣ: <span><strong>{{getSummaMonthCountVorid(0)}}</strong></span> -аризаву гузоришҳо ба қайд гирифта шудааст</h6>
+      <table  align="center" cellpadding="0" cellspacing="0" border="0"  class="tables">
+        <tr>
+          <td>№</td>
+          <td>Мактубҳои содиротӣ фиристода шуд</td>
+          <td>Шумора</td>
+        </tr>
+        <tr *ngFor="let b of hisobot1; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{b.name}}</td>
+          <td>
+             <span *ngIf="getElByTypeSodir(b.id) !== undefined">
+                 {{getElByTypeSodir(b.id).count}}
+            </span>
+          </td>
+        </tr>
+      </table>
+      <h6 style="padding-top: 7px">Ҳамагӣ: <span><strong>{{getSummaMonthCountSodir(0)}}</strong></span>-мактуб ирсол шудааст.</h6>
+      <div id="h4"><h4>Иҷрокунандагон:</h4></div>
+      <div id="footer">
+        <div class="div1">
+          <h5>Мутахасиси шуъба</h5>
+          <mat-form-field class="form-field" [floatLabel]="'never'">
+            <mat-label>Ному насаб</mat-label>
+            <input matInput type="text" placeholder="Номро дохил кунед"/>
+          </mat-form-field>
+        </div>
+        <div class="div1">
+          <h5>Мутахасиси шуъба</h5>
+          <mat-form-field class="form-field" [floatLabel]="'never'">
+            <mat-label>Ному насаб</mat-label>
+            <input matInput type="text" placeholder="Номро дохил кунед"/>
+          </mat-form-field>
+        </div>
+        <div class="div1">
+          <h5>Мудири шуъба</h5>
+          <mat-form-field class="form-field1" [floatLabel]="'never'">
+            <mat-label>Ному насаб</mat-label>
+            <input matInput type="text" placeholder="Номро дохил кунед"/>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div *ngIf="filter.typeOfDocument === '0' && filter.report === 'year'" id="print">
+<mat-card class="section">
+  <h4 align="center" style="margin-top: 30px; font-family: 'Times New Roman';">Ҳисоботи</h4>
+  <h4 align="center" style="font-family: 'Times New Roman'; font-size: 24px"> Шуъбаи бақайдгири ҳуҷҷатҳо дар соли <span>{{filter.to | date: 'yyyy'}}</span></h4>
+  <table align="center" cellpadding="0" cellspacing="0" border="0"  class="tables" style="text-align: left">
+    <tr>
+      <td>№</td>
+      <td>Номгуи ҳуҷҷатҳо</td>
+      <td>янв</td>
+      <td>фев</td>
+      <td>мар</td>
+      <td>апр</td>
+      <td>май</td>
+      <td>июн</td>
+      <td>июл</td>
+      <td>авг</td>
+      <td>сен</td>
+      <td>окт</td>
+      <td>ноя</td>
+      <td>дек</td>
+      <td><mat-icon>functions</mat-icon></td>
+    </tr>
+    <tr *ngFor="let d of hisobot; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{d.name}}</td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthVorid(d.id, 1) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 1).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthVorid(d.id, 2) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 2).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthVorid(d.id, 3) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 3).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthVorid(d.id, 4) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 4).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 5) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 5).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 6) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 6).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 7) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 7).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 8) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 8).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 9) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 9).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 10) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 10).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 11) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 11).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthVorid(d.id, 12) !== undefined">
+          {{ getElByTypeAndMonthVorid(d.id, 12).count }}
+        </span>
+      </td>
+      <td>
+        <span>
+        {{ getSummaCountVorid(d.id) }}
+          </span>
+      </td>
+
+    </tr>
+    <tr >
+      <td colspan="15" align="center" style="background-color: #8c8c88; color: #000000;">Мактубҳои содиротӣ</td>
+    </tr>
+    <tr style=" background: -webkit-linear-gradient(80deg,  #184c7d 10%, #49707d 80%); color: #fff; text-align: center" >
+      <td>№</td>
+      <td>Номгуи ҳуҷҷатҳо</td>
+      <td>янв</td>
+      <td>фев</td>
+      <td>мар</td>
+      <td>апр</td>
+      <td>май</td>
+      <td>июн</td>
+      <td>июл</td>
+      <td>авг</td>
+      <td>сен</td>
+      <td>окт</td>
+      <td>ноя</td>
+      <td>дек</td>
+      <td><mat-icon>functions</mat-icon></td>
+    </tr>
+    <tr *ngFor="let b of hisobot1; let i = index" >
+      <td>{{i + 1}}</td>
+      <td>{{b.name}}</td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthSodir(b.id, 1) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 1).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthSodir(b.id, 2) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 2).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthSodir(b.id, 3) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 3).count }}
+        </span>
+      </td>
+      <td>
+        <span *ngIf="getElByTypeAndMonthSodir(b.id, 4) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 4).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 5) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 5).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 6) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 6).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 7) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 7).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 8) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 8).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 9) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 9).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 10) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 10).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 11) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 11).count }}
+        </span>
+      </td>
+      <td>
+         <span *ngIf="getElByTypeAndMonthSodir(b.id, 12) !== undefined">
+          {{ getElByTypeAndMonthSodir(b.id, 12).count }}
+        </span>
+      </td>
+      <td>
+        <span>
+        {{ getSummaCountSodir(b.id) }}
+          </span>
+      </td>
+    </tr>
+  </table>
+  <!--<button (click)="printToCart('print')">Print</button>-->
+</mat-card>
+</div>
+
+

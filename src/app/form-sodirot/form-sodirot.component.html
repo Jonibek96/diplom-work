@@ -1,0 +1,35 @@
+ <mat-card id="section1">
+  <mat-form-field style="width: 100%">
+    <input matInput  placeholder="Ҷустуҷу аз рӯи мазмуни ҳуҷҷат" [(ngModel)]="searchTable">
+  </mat-form-field>
+  <table align="center" cellpadding="0" cellspacing="0" border="0" class="center" id="table1" >
+    <tr>
+      <td class="tdColor">№</td>
+      <td class="tdColor">№ содирот</td>
+      <td class="tdColor">Саннаи содирот</td>
+      <td class="tdColor">Ба куҷо фиристода мешавад</td>
+      <td class="tdColor">Мазмун ва мундариҷаи мактуб</td>
+      <td class="tdColor">Иҷрокунанда</td>
+      <td class="tdColor">
+        <span matTooltip="Дохилкуни маълумот" >
+            <mat-icon class="md-24" (click)="addDoc()">add_circle</mat-icon>
+        </span>
+      </td>
+    </tr>
+    <tr *ngFor="let s of mactub | filterTable: searchTable: 'mazmun'; let i = index">
+      <td> {{i + 1}}</td>
+      <td>{{s.nomerSodir}}</td>
+      <td>{{s.sanaiSodir | date: 'd/M/yyyy'}}</td>
+      <td>{{s.baKujoFirist}}</td>
+      <td>{{s.mazmun}}</td>
+      <td>{{s.ijrokunanda}}</td>
+      <span matTooltip="Ислоҳоти маълумот" >
+      <mat-icon class="md-24" (click)="editDoc(s)">edit</mat-icon>
+      </span>
+      <span matTooltip="Тоза намудани маълумот" >
+        <mat-icon class="md-24" (click)="deleteDoc(s.id, i)">delete</mat-icon>
+      </span>
+    </tr>
+  </table>
+</mat-card>
+

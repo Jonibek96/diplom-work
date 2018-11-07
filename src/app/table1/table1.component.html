@@ -1,0 +1,46 @@
+<!--table voridot-->
+<mat-card id="section">
+  <mat-form-field style="width: 100%">
+    <input matInput  placeholder="Ҷустуҷу аз рӯи мазмуни мухтасари ҳуҷҷат" [(ngModel)]="searchTable">
+  </mat-form-field>
+  <table align="center" cellpadding="0" cellspacing="0" border="0" class="center" id="tables">
+    <tr>
+      <td class="tdColor">Р/т</td>
+      <td class="tdColor">№</td>
+      <td class="tdColor">Саннаи воридот</td>
+      <td class="tdColor">Аз куҷо ворид шудааст, санна ва рақами воридоти</td>
+      <td class="tdColor">Мазмуни мухтасар</td>
+      <td class="tdColor">Ҳуҷҷат ба ки равона шудааст</td>
+      <td class="tdColor">Шахси масъул</td>
+      <td class="tdColor">Санна ва иҷрои шахси масъул</td>
+      <td class="tdColor">Ҷавоби мактуб ва иҷроиш</td>
+      <td class="tdColor">
+       <span matTooltip="Дохилкуни маълумот">
+            <mat-icon class="md-24" (click)="addDoc()">add_circle</mat-icon>
+        </span>
+      </td>
+    </tr>
+    <tr *ngFor="let z of mactubi  | filterTable: searchTable: 'mazmunHujat'; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{z.num}}</td>
+      <td>{{z.sanaVoridot | date: 'd/M/yyyy'}}</td>
+      <td>{{z.azKujoVoridot}}</td>
+      <td>{{z.mazmunHujat}}</td>
+      <td>{{z. hujatiRavona}}</td>
+      <td>{{z.shaxsiMasul}}</td>
+      <td>{{z. sanaIjro | date: 'd/M/yyyy'}}</td>
+      <td>{{z.javobiMak}}</td>
+      <span matTooltip="Тоза кардани маълумот">
+            <mat-icon class="md-24" (click)="deleteDoc(z.id, i)">delete</mat-icon>
+        </span>
+      <span matTooltip="Ислоҳоти маълумот">
+            <mat-icon class="md-24"  (click)="editDoc(z)">edit</mat-icon>
+        </span>
+    </tr>
+  </table>
+</mat-card>
+
+
+
+
+

@@ -1,0 +1,9 @@
+#section {
+  margin-top: 56px;
+  margin-left: 10px;
+  width: 78%;
+  float:left;
+  padding:4px;
+  display: block;
+  overflow-y: auto;
+}

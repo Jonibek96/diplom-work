@@ -1,0 +1,37 @@
+#section {
+  margin-top: 56px;
+  margin-left: 10px;
+  width: 77%;
+  height: 100%;
+  float:left;
+  padding:5px;
+  background-color: #fff;
+}
+#form3{
+  margin: 10px;
+  text-align: right;
+}
+
+ .inp{
+  width: 150px;
+
+ }
+
+ .inp1{
+   width: 200px;
+ }
+ .inp2{
+   width: 390px;
+ }
+
+ .btn-primary{
+   padding: 5px;
+   text-align: center;
+   width: 60px;
+   height: 35px;
+ }
+
+.animate-zoom {-webkit-animation:animatezoom 0.6s;animation:animatezoom 0.6s}
+@-webkit-keyframes animatezoom{from{-webkit-transform:scale(0)} to{-webkit-transform:scale(1)}}
+@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+

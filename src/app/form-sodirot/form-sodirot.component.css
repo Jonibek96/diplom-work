@@ -1,0 +1,39 @@
+#section1 {
+  margin-top: 56px;
+  margin-left: 10px;
+  width: 78%;
+  max-height: 1240px;
+  float:left;
+  padding:4px;
+  display: block;
+  overflow-y: auto;
+}
+#table1{
+  color: #000;
+  width: 100%;
+  font-size: 14px;
+}
+
+#table1 td {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: center;
+}
+#table1 tr:nth-child(odd){
+  background: #fff;
+}
+
+#table1 tr:nth-child(even){
+  background: #f2f2f2;
+}
+
+#table1 tr:first-child{
+  background: -webkit-linear-gradient(80deg,  #184c7d 10%, #49707d 80%);
+  font-weight: bold;
+  color: #fff;
+}
+
+
+/*.animate-zoom {-webkit-animation:animatezoom 0.6s;animation:animatezoom 0.6s}*/
+/*@-webkit-keyframes animatezoom{from{-webkit-transform:scale(0)} to{-webkit-transform:scale(1)}}*/
+/*@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}*/

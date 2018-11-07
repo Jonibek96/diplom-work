@@ -1,0 +1,40 @@
+<div *ngIf="filter.report !== 'year' && filter.report !== 'currentMonth' && filter.report !== 'lastMonth' && filter.typeOfDocument !== '0'">
+  <mat-card class="section">
+    <table align="center" cellpadding="0" cellspacing="0" border="0"  class="tables">
+      <tr>
+        <td class="tdColor">№</td>
+        <td class="tdColor">№ содирот</td>
+        <td class="tdColor">Саннаи содироти ҳуҷҷат</td>
+        <td class="tdColor">Ба куҷо фиристода мешавад</td>
+        <td class="tdColor">Мазмун ва мундариҷаи мактуб</td>
+        <td class="tdColor">Иҷрокунанда</td>
+      </tr>
+      <tr *ngFor="let s of mactub; let i = index">
+        <td> {{i + 1}}</td>
+        <td>{{s.nomerSodir}}</td>
+        <td>{{s.sanaiSodir | date: 'd/M/yyyy'}}</td>
+        <td>{{s.baKujoFirist}}</td>
+        <td>{{s.mazmun}}</td>
+        <td>{{s.ijrokunanda}}</td>
+      </tr>
+    </table>
+  </mat-card>
+</div>
+
+<div *ngIf="filter.report === 'day'  && filter.typeOfDocument === '0'">
+  <mat-card class="section">
+    <h6 align="center" style="font-family: 'Times New Roman'; font-size: 18px; margin-top: 15px">Ҳисоботи имрузаи Шуъбаи бақайдгири ҳуҷҷатҳо</h6>
+    <table align="center" cellpadding="0" cellspacing="0" border="0" class="center" class="tables">
+      <tr>
+        <td>Р/т</td>
+        <td>Номгуи ҳуҷҷати воридшуда</td>
+        <td>Шумора</td>
+      </tr>
+    </table>
+  </mat-card>
+</div>
+
+
+
+
+

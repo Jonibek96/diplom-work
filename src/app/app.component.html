@@ -1,0 +1,198 @@
+<!--menu top-->
+<div id="header">
+  <div id="searchdiv">
+    <input type="text" name="search" placeholder="Поиск.." (keyup)="myFunction()"  class="search">
+  </div>
+  <div id="titletype">
+      <input name="componentName" hidden [(ngModel)]="component" #cmp>
+      <h2 align="center" style="font-size: 20px;">
+        <span style="color: #fff;"> {{cmp.value}}</span></h2>
+  </div>
+    <div id="logotipHeader" ></div>
+</div>
+
+<!-- menu left-->
+<div id="menu">
+  <ul id="LeftMenu">
+    <!--<div id="logotipmenu" ></div>-->
+    <input type="text" name="search" placeholder="Ҷустуҷуи ҳуҷҷатҳо.." (keyup)="myFunction()"  class="searchmanu" id="mySearch">
+    <mat-card class="card" onclick="openCity(event);">
+      <a title="Фармонҳои Ректор" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 1); false">
+        <mat-icon class="mdi-24">account_balance</mat-icon>
+        <span  >Фармонҳои Ректор</span></a>
+    </mat-card>
+    <mat-card class="card">
+      <a title="Паёмҳои президенти ҶТ" href="#"  class="toogle"  (click)="createComponentDynamically(table1Component, 2); false">
+        <mat-icon class="mdi-24">record_voice_over</mat-icon>
+        <span >Паёмҳои президенти ҶТ</span></a>
+    </mat-card>
+    <mat-accordion >
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false" >
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">insert_drive_file</mat-icon>
+            Қарорҳо
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+         <mat-card class="card1" > <a title="Қароорҳои ҳукумати ҶТ" href="#" class="toogle"  (click)="createComponentDynamically(table1Component, 3); false">
+          <span>Қароорҳои ҳукумати ҶТ</span></a></mat-card>
+        <mat-card class="card1"><a title="Қароорҳои Ректор" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 4); false">
+          <span>Қароорҳои Ректор</span></a></mat-card>
+        <mat-card class="card1"><a title="Қароорҳои шӯрои олмон" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 5); false">
+          <span>Қароорҳои шӯрои олмон</span></a></mat-card>
+        <mat-card class="card1"><a title="Қароорҳо ва қонунҳои Маҷлиси Олии  ҶТ" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 6); false">
+            <span>Қароорҳо ва қонунҳои Маҷлиси Олии ҶТ</span></a></mat-card>
+        <mat-card class="card1"><a title="Қароорҳо ва фармоишҳои ВМ ва ИҶТ" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 7); false">
+          <span>Қароорҳо ва фармоишҳои ВМ ва ИҶТ</span></a></mat-card>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion  id="acar">
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">archive</mat-icon>
+            Мактубҳои воридоти
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card class="card1"><a title="Мактубҳои воридоти аз Ҳукумати ҶТ" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 8); false">
+          <span>Мактубҳои воридоти аз Ҳукумати ҶТ</span></a></mat-card>
+
+        <mat-card class="card1"><a title="Мактубҳои воридоти аз ВМваИҶТ" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 9); false">
+          <span>Мактубҳои воридоти аз ВМваИҶТ</span></a></mat-card>
+
+        <mat-card class="card1"><a title="Мактубҳои воридоти аз ДИП ҶТ" href="#" class="toogle" (click)="createComponentDynamically(table1Component, 10); false">
+          <span>Мактубҳои воридоти аз ДИП ҶТ</span></a></mat-card>
+    </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion >
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">unarchive</mat-icon>
+            Мактубҳои содиротӣ
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card class="card1"> <a title="Мактубҳои содироти аз Ҳукумати ҶТ" href="#" class="toogle" (click)="createComponentDynamically1(formsodirotComponent, 1); false">
+          <span>Мактубҳои содироти ба Ҳукумати ҶТ</span></a></mat-card>
+
+        <mat-card class="card1"><a title="Мактубҳои содироти ба ВМваИҶТ" href="#" class="toogle" (click)="createComponentDynamically1(formsodirotComponent, 2); false">
+          <span>Мактубҳои содироти ба ВМваИҶТ</span></a></mat-card>
+
+        <mat-card class="card1"> <a title="Мактубҳои содироти ба ДИП ҶТ" href="#" class="toogle" (click)="createComponentDynamically1(formsodirotComponent, 3); false">
+          <span>Мактубҳои содироти ба ДИП ҶТ</span></a></mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion >
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">assignment</mat-icon>
+            Аризаҳо
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card class="card1"><a title="Аризаҳои донишҷуён оиди интиқол ва барқарор"  href="#" class="toogle" (click)="createComponentDynamically(table1Component,11); false">
+          <span>Аризаҳои донишҷуён оиди интиқол ва барқарор</span></a></mat-card>
+        <mat-card class="card1"><a title="Аризаҳои донишҷуён" href="#" (click)="createComponentDynamically(table1Component,12); false">
+          <span>Аризаҳои донишҷуён</span></a></mat-card>
+        <mat-card class="card1"><a title="Аризаҳои устодон ва кормандон(қабул, озод)" href="#" (click)="createComponentDynamically(table1Component,13); false">
+          <span>Аризаҳои устодон ва кормандон(қабул, озод)</span></a></mat-card>
+        <mat-card class="card1"><a title="Аризаҳои аппелятсионӣ" href="#" (click)="createComponentDynamically(table1Component,14); false">
+          <span>Аризаҳои аппелятсионӣ</span></a></mat-card>
+        <mat-card class="card1"><a title="Аризаҳои шикоятӣ" href="#" (click)="createComponentDynamically(table1Component,15); false">
+          <span>Аризаҳои шикоятӣ</span></a></mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion >
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">class</mat-icon>
+            Гузоришҳо
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card class="card1"><a title="Гузоришҳо нисбатӣ донишҷуён" href="#" (click)="createComponentDynamically(table1Component,16); false">
+          <span>Гузоришҳо нисбатӣ донишҷуён</span></a></mat-card>
+        <mat-card class="card1"><a title="Гузориш, пешниҳод ва дархостӣ кормандон" href="#" (click)="createComponentDynamically(table1Component,17); false">
+          <span>Гузориш, пешниҳод ва дархостӣ кормандон</span></a></mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+      <mat-card class="card">
+        <a title="Ҳисоботҳо" href="#"  (click)="createComponentDynamically(formhisob, 18); false">
+          <mat-icon class="mdi-24">report</mat-icon>
+          <span>Ҳисоботҳо</span></a>
+      </mat-card>
+
+    <mat-card class="card">
+      <a title="Ҳуҷҷатҳои воридоти(умуми)" href="#" (click)="createComponentDynamically(table1Component,19); false">
+        <mat-icon class="mdi-24">get_app</mat-icon>
+        <span>Ҳуҷҷатҳои воридоти(умуми)</span></a>
+    </mat-card>
+
+    <mat-card class="card">
+      <a title="Ҳуҷҷатҳои содироти(умуми)" href="#" (click)="createComponentDynamically1(formsodirotComponent, 4); false">
+        <mat-icon class="mdi-24">publish</mat-icon>
+        <span>Ҳуҷҷатҳои содироти(умуми)</span></a>
+    </mat-card>
+
+    <mat-card class="card">
+      <a title="Санадҳо" href="#" (click)="createComponentDynamically(table1Component, 20); false">
+        <mat-icon class="mdi-24">receipt</mat-icon>
+        <span>Санадҳо</span></a>
+    </mat-card>
+
+    <mat-accordion >
+      <mat-expansion-panel class="mat1" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title">
+            <mat-icon class="mdi-24">note</mat-icon>
+            Ҳуҷҷатҳои дигар
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card class="card1"><a title="Қабули лифофаҳо аз почта" href="#"  (click)="createComponentDynamically(table1Component,21); false">
+          <span>Қабули лифофаҳо аз почта</span></a></mat-card>
+        <mat-card class="card1"><a title="Муроҷиати шифоҳи" href="#"  (click)="createComponentDynamically(table1Component,22); false">
+          <span>Муроҷиати шифоҳи</span></a></mat-card>
+        <mat-card class="card1"><a title="Муроҷиат таввасути алоқаи телфонӣ" href="#"  (click)="createComponentDynamically(table1Component,23); false">
+          <span>Муроҷиат таввасути алоқаи телфонӣ</span></a></mat-card>
+        <mat-card class="card1"><a title="Низомномаҳо" href="#" (click)="createComponentDynamically(table1Component,24); false">
+          <span>Низомномаҳо</span></a></mat-card>
+        <mat-card class="card1"><a title="Дастури вазифавии кормандон" href="#"  (click)="createComponentDynamically(table1Component,25); false">
+          <span>Дастури вазифавии кормандон</span></a></mat-card>
+        <mat-card class="card1"><a title="Нақшаҳои кории кормандон" href="#"  (click)="createComponentDynamically(table1Component,26); false">
+          <span>Нақшаҳои кории кормандон</span></a></mat-card>
+        <mat-card class="card1"><a title="Нақшаҳои кории шуъба" href="#"  (click)="createComponentDynamically(table1Component,27); false">
+          <span>Нақшаҳои кории шуъба</span></a></mat-card>
+        <mat-card class="card1"><a title="Сарҷаласаҳои маҷлисҳои шуъба" href="#"  (click)="createComponentDynamically(table1Component,28); false">
+          <span>Сарҷаласаҳои маҷлисҳои шуъба</span></a></mat-card>
+        <mat-card class="card1"><a title="Ахбор" href="#"  (click)="createComponentDynamically(table1Component,29); false">
+          <span>Ахбор</span></a></mat-card>
+        <mat-card class="card1"><a title="Пешниҳодҳо ва дархостҳо" href="#"  (click)="createComponentDynamically(table1Component,30); false">
+          <span>Пешниҳодҳо ва дархостҳо</span></a></mat-card>
+        <mat-card class="card1"><a title="Шартномаҳо" href="#"  (click)="createComponentDynamically(table1Component,31); false">
+          <span>Шартномаҳо</span></a></mat-card>
+        <mat-card class="card1"><a title="Ҳуҷҷатҳои тафтишотӣ" href="#"  (click)="createComponentDynamically(table1Component,32); false">
+          <span>Ҳуҷҷатҳои тафтишотӣ</span></a></mat-card>
+        <mat-card class="card1"><a title="Ҳуҷҷатҳои бойгонишуда" href="#"  (click)="createComponentDynamically(table1Component,33); false">
+          <span>Ҳуҷҷатҳои бойгонишуда</span></a></mat-card>
+        <mat-card class="card1"><a title="Феҳраст" href="#"  (click)="createComponentDynamically(table1Component,34); false">
+          <span>Феҳраст</span></a></mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ul>
+</div>
+<div id="divfixed"></div>
+<div #content></div>
+<div id="footer">
+  <hr style="box-shadow: 4px 3px #9e9e9e;">
+</div>

@@ -1,0 +1,43 @@
+/*page divs*/
+div{
+  width: 100%;
+}
+#section {
+  margin-top: 56px;
+  margin-left: 10px;
+  width: 78%;
+  max-height: 1240px;
+  float:left;
+  padding:4px;
+  display: block;
+  overflow-y: auto;
+
+}
+#tables{
+  color: #000;
+  width: 100%;
+  font-size: 14px;
+}
+
+#tables td {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: center;
+}
+ #tables tr:nth-child(odd){
+   background: #fff;
+ }
+#tables tr:nth-child(even){
+  background: #f2f2f2;
+}
+
+#tables tr:first-child{
+  background: -webkit-linear-gradient(80deg,  #184c7d 10%, #49707d 80%);
+  font-weight: bold;
+  color: #fff;
+}
+
+
+
+
+

@@ -1,0 +1,73 @@
+/*page divs*/
+.section {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  width: 77%;
+  height: 100%;
+  float:left;
+  padding:5px;
+  display: block;
+  max-width: 290vh;
+  overflow-y: auto;
+}
+.tables{
+  color: #000;
+  width: 100%;
+  text-align: left;
+}
+.tables td {
+  /*width: 20%;*/
+  border: 1px solid #000;
+  padding: 2px;
+
+}
+.tables tr:first-child{
+  /*background: -webkit-linear-gradient(80deg, #a82f1e 10%, #7e1a0c 80%);*/
+  background: -webkit-linear-gradient(80deg,  #184c7d 10%, #49707d 80%);
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+
+h5{
+  display: inline-block;
+  margin-bottom: 5px;
+  font-family: "Times New Roman";
+  font-size: 16px;
+}
+
+h6{
+  margin-left: 50px;
+  font-family: "Times New Roman";
+  font-size: 16px;
+  padding: 3px;
+}
+.form-field {
+  padding-left: 90px;
+  width: 400px;
+}
+
+.form-field1 {
+  padding-left: 120px;
+  width: 430px;
+}
+#footer{
+  float: right;
+  margin-right: 30px;
+  margin-bottom: 15px;
+
+
+}
+
+#h4{
+  display: block;
+  position: absolute;
+  margin-top: 13px;
+  margin-left: 250px;
+  font-family: "Times New Roman";
+}
+.div1{
+  margin-bottom: -20px;
+}
+
